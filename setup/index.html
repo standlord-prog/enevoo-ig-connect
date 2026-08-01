@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>enevoó — настройка приложения Meta</title>
+<style>
+  :root{ --bg:#faf9f7; --fg:#1a1a1a; --muted:#6b6b6b; --line:#e2ded8; --card:#fff;
+         --accent:#1a1a1a; --hi:#f4efe6; --warn:#8a5a00; --warnbg:#fdf5e3;
+         --ok:#1c6b3f; --okbg:#e8f4ed; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#141312; --fg:#f2efea; --muted:#9a948c; --line:#2e2b28; --card:#1d1b19;
+           --accent:#f2efea; --hi:#262320; --warn:#e8c07a; --warnbg:#302614;
+           --ok:#7fd4a3; --okbg:#14301f; } }
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 16px 64px;background:var(--bg);color:var(--fg);
+       font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       display:flex;justify-content:center}
+  .wrap{width:100%;max-width:660px}
+  .brand{letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:var(--muted);
+         text-align:center;margin-bottom:10px}
+  h1{font-size:26px;font-weight:600;margin:0 0 8px;text-align:center;letter-spacing:-.01em}
+  .lede{color:var(--muted);font-size:15px;text-align:center;margin:0 auto 30px;max-width:52ch}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;
+        padding:20px 22px;margin-bottom:14px}
+  .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+     border-radius:50%;background:var(--accent);color:var(--bg);font-size:13px;font-weight:700;
+     margin-right:10px;flex:none}
+  .head{display:flex;align-items:center;font-weight:600;font-size:17px;margin-bottom:10px}
+  p{margin:0 0 10px}
+  .sub{color:var(--muted);font-size:14px}
+  code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+       background:var(--hi);padding:2px 6px;border-radius:5px;word-break:break-all}
+  .field{background:var(--hi);border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+         font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+         word-break:break-all;user-select:all;margin:10px 0}
+  .copy{display:inline-block;margin-top:4px;padding:9px 16px;font-size:14px;font-weight:600;
+        border:0;border-radius:8px;background:var(--accent);color:var(--bg);cursor:pointer;
+        font-family:inherit}
+  .note{background:var(--warnbg);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;
+        padding:12px 14px;font-size:14px;color:var(--fg);margin:12px 0 0}
+  .note b{color:var(--warn)}
+  .done{background:var(--okbg);border:1px solid var(--line);border-left:3px solid var(--ok);
+        border-radius:0 8px 8px 0;padding:14px 16px;margin-top:20px;font-size:15px}
+  .done b{color:var(--ok)}
+  ul{margin:8px 0 0;padding-left:20px} li{margin-bottom:5px}
+  a{color:inherit}
+  .foot{text-align:center;color:var(--muted);font-size:13px;margin-top:26px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">enevoó</div>
+  <h1>Подключение Instagram</h1>
+  <p class="lede">Пять шагов. Нужен компьютер и вход в Facebook.
+     После этого постами занимается автоматика — повторять не придётся.</p>
+
+  <div class="step">
+    <div class="head"><span class="n">1</span>Открыть кабинет разработчика</div>
+    <p>Зайдите на <code>developers.facebook.com</code> и войдите под своим Facebook-аккаунтом.</p>
+    <p class="sub">Если кабинет открывается впервые, Facebook попросит подтвердить телефон
+       или почту — это обычная разовая проверка.</p>
+  </div>
+
+  <div class="step">
+    <div class="head"><span class="n">2</span>Создать приложение</div>
+    <p>Кнопка <b>My Apps</b> → <b>Create App</b>.</p>
+    <ul class="sub">
+      <li>Название — <code>enevoo Instagram</code> (видно только вам)</li>
+      <li>Тип приложения — <b>Business</b></li>
+    </ul>
+    <div class="note"><b>Если Meta спросит про «use case»</b> — выберите вариант,
+       связанный с Instagram, либо «Other» и затем тип <b>Business</b>.
+       Meta периодически меняет этот экран.</div>
+  </div>
+
+  <div class="step">
+    <div class="head"><span class="n">3</span>Добавить Instagram</div>
+    <p>В списке продуктов найдите <b>Instagram</b> → <b>Set up</b>,
+       затем откройте <b>API setup with Instagram business login</b>.</p>
+  </div>
+
+  <div class="step">
+    <div class="head"><span class="n">4</span>Вписать адрес возврата</div>
+    <p>Раздел <b>3. Set up Instagram business login</b> → <b>Business login settings</b>.
+       В поле <b>OAuth Redirect URI</b> вставьте ровно этот адрес:</p>
+    <div class="field" id="uri">https://standlord-prog.github.io/enevoo-ig-connect/</div>
+    <button class="copy" id="cp">Скопировать адрес</button>
+    <div class="note"><b>Важно:</b> адрес должен совпадать посимвольно, вместе с косой чертой
+       в конце. Не забудьте нажать <b>Save</b>.</div>
+  </div>
+
+  <div class="step">
+    <div class="head"><span class="n">5</span>Прислать два значения</div>
+    <p>На той же странице найдите и скопируйте:</p>
+    <ul>
+      <li><b>Instagram App ID</b> — длинное число</li>
+      <li><b>Instagram App Secret</b> — под кнопкой <b>Show</b></li>
+    </ul>
+    <p class="sub">Отправьте оба Андрею. Это ключи приложения, а не пароль от Instagram
+       и не пароль от Facebook — доступ к самим аккаунтам они не дают.</p>
+  </div>
+
+  <div class="done">
+    <b>Дальше от вас нужен один клик.</b> Андрей пришлёт ссылку —
+    вы откроете её, нажмёте <b>Allow</b>, и появится страница с кодом.
+    Скопируете код, отправите Андрею. На этом всё.
+  </div>
+
+  <p class="foot">Модерацию приложения проходить <b>не нужно</b>: аккаунт наш собственный.<br>
+     Если экран выглядит не так, как описано — пришлите скриншот, разберёмся.</p>
+</div>
+<script>
+document.getElementById('cp').onclick=function(){
+  var t=document.getElementById('uri').textContent.trim(),b=this;
+  var done=function(){b.textContent='Скопировано ✓';
+    setTimeout(function(){b.textContent='Скопировать адрес';},2000);};
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,done);}
+  else{var r=document.createRange();r.selectNode(document.getElementById('uri'));
+       getSelection().removeAllRanges();getSelection().addRange(r);
+       try{document.execCommand('copy');}catch(e){}done();}
+};
+</script>
+</body>
+</html>
