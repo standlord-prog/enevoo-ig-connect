@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>enevoó — подключение Instagram (РФ)</title>
+<style>
+  :root{
+    --bg:#faf9f7; --fg:#1a1a1a; --muted:#6b6b6b; --line:#e2ded8;
+    --card:#ffffff; --accent:#1a1a1a; --ok:#1c6b3f; --okbg:#e8f4ed;
+    --err:#8a2020; --errbg:#fbeaea;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#141312; --fg:#f2efea; --muted:#9a948c; --line:#2e2b28;
+           --card:#1d1b19; --accent:#f2efea; --ok:#7fd4a3; --okbg:#14301f;
+           --err:#ef9a9a; --errbg:#331717; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px;background:var(--bg);color:var(--fg);
+       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       display:flex;justify-content:center}
+  .wrap{width:100%;max-width:560px}
+  .brand{letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:var(--muted);
+         text-align:center;margin-bottom:6px}
+  .zone{text-align:center;font-size:11px;color:var(--muted);margin-bottom:26px;
+        letter-spacing:.14em;text-transform:uppercase}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  h1{font-size:20px;font-weight:600;margin:0 0 6px}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 20px}
+  .badge{display:inline-block;font-size:12px;padding:4px 10px;border-radius:999px;margin-bottom:16px}
+  .badge.ok{background:var(--okbg);color:var(--ok)}
+  .badge.err{background:var(--errbg);color:var(--err)}
+  .code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+        background:var(--bg);border:1px solid var(--line);border-radius:10px;
+        padding:14px;word-break:break-all;user-select:all;margin:0 0 14px}
+  button{width:100%;padding:14px;font-size:15px;font-weight:600;border:0;border-radius:10px;
+         background:var(--accent);color:var(--bg);cursor:pointer;font-family:inherit}
+  button:active{opacity:.8}
+  ol{margin:18px 0 0;padding-left:20px;color:var(--muted);font-size:14px}
+  li{margin-bottom:6px}
+  .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:20px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">enevoó</div>
+  <div class="zone">русская витрина · @enevoo.ru</div>
+  <div class="card" id="card">
+    <div id="body"><p class="sub">Читаю ответ Instagram…</p></div>
+  </div>
+  <p class="foot">Страница ничего не сохраняет и никуда не отправляет.<br>
+     Код виден только в этом браузере и действует недолго.</p>
+</div>
+<script>
+(function(){
+  var p = new URLSearchParams(location.search);
+  var code = p.get('code');
+  var err  = p.get('error_description') || p.get('error');
+  var body = document.getElementById('body');
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  if (code) {
+    body.innerHTML =
+      '<span class="badge ok">Доступ выдан</span>' +
+      '<h1>Готово. Код получен</h1>' +
+      '<p class="sub">Если агент открывал эту ссылку сам — он уже забрал код, делать ничего не нужно. ' +
+      'Если вы открыли её вручную, скопируйте код и отправьте агенту.</p>' +
+      '<div class="code" id="c">' + esc(code) + '</div>' +
+      '<button id="b">Скопировать код</button>' +
+      '<ol><li>Код одноразовый и живёт считаные минуты</li>' +
+      '<li>Отправьте его агенту сразу, если копировали вручную</li>' +
+      '<li>Эту вкладку можно закрыть</li></ol>';
+    document.getElementById('b').onclick = function(){
+      var t = document.getElementById('c').textContent, b = this;
+      var done = function(){ b.textContent = 'Скопировано ✓';
+                             setTimeout(function(){ b.textContent = 'Скопировать код'; }, 2000); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(t).then(done, done); }
+      else { var r = document.createRange(); r.selectNode(document.getElementById('c'));
+             getSelection().removeAllRanges(); getSelection().addRange(r);
+             try { document.execCommand('copy'); } catch(e){} done(); }
+    };
+  } else if (err) {
+    body.innerHTML =
+      '<span class="badge err">Доступ не выдан</span>' +
+      '<h1>Instagram вернул ошибку</h1>' +
+      '<div class="code">' + esc(err) + '</div>' +
+      '<p class="sub">Чаще всего помогает открыть ссылку заново и нажать «Разрешить». ' +
+      'Если повторяется — отправьте этот текст агенту.</p>';
+  } else {
+    body.innerHTML =
+      '<h1>Страница подключения Instagram</h1>' +
+      '<p class="sub">Русская витрина бренда. Открывать напрямую не нужно — ' +
+      'страница срабатывает сама в момент выдачи доступа.</p>';
+  }
+})();
+</script>
+</body>
+</html>
