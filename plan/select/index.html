@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>enevoó · отбор кадров в ленту</title>
+<style>
+:root{--bg:#0e0d0c;--fg:#ece8e2;--mut:#96908a;--acc:#c9b99a;--sel:#7fd4a3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:16px 8px 120px}
+h1{font-weight:300;font-size:20px;text-align:center;letter-spacing:.08em;margin:14px 0 2px}
+.sub{color:var(--mut);text-align:center;font-size:12.5px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:14px}
+.chip{border:1px solid #333;border-radius:999px;padding:4px 12px;font-size:12px;color:var(--mut);cursor:pointer;user-select:none}
+.chip.on{color:var(--bg);background:var(--acc);border-color:var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px}
+.c{position:relative;aspect-ratio:4/5;cursor:pointer;background:#000;border-radius:4px;overflow:hidden}
+.c img{width:100%;height:100%;object-fit:cover;display:block}
+.c .n{position:absolute;left:5px;top:5px;font-size:11px;background:rgba(0,0,0,.65);padding:1px 7px;border-radius:999px}
+.c.sel{outline:3px solid var(--sel);outline-offset:-3px}
+.c.sel::after{content:"✓";position:absolute;right:6px;top:4px;color:var(--sel);font-size:18px;font-weight:700;text-shadow:0 0 6px #000}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(14,13,12,.96);border-top:1px solid #2a2724;padding:10px 12px;display:flex;gap:10px;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.cnt{font-size:13px;color:var(--mut)}.cnt b{color:var(--sel);font-size:16px}
+button{background:var(--acc);color:var(--bg);border:0;border-radius:10px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer}
+#out{position:fixed;left:10px;right:10px;bottom:64px;background:#171514;border:1px solid #333;border-radius:10px;padding:10px;display:none;max-height:34vh;overflow:auto;font:12px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap}
+</style></head><body><div class="wrap">
+<h1>ОТБОР КАДРОВ В ЛЕНТУ</h1>
+<div class="sub">тапните кадры, достойные Instagram · выбор сохраняется на телефоне · внизу «Скопировать» — и пришлите список</div>
+<div class="chips"><span class="chip on" data-f="все">все</span><span class="chip" data-f="Питер · отбор">Питер · отбор</span><span class="chip" data-f="Питер · ретушь">Питер · ретушь</span><span class="chip" data-f="Отбор для поста">Отбор для поста</span><span class="chip" data-f="Имидж 05.06">Имидж 05.06</span><span class="chip" data-f="Мужская ретушь">Мужская ретушь</span></div>
+<div class="grid"><div class="c" data-n="1" data-g="Питер · отбор"><img loading="lazy" src="img/001.jpg" alt=""><span class="n">1</span></div>
+<div class="c" data-n="2" data-g="Питер · отбор"><img loading="lazy" src="img/002.jpg" alt=""><span class="n">2</span></div>
+<div class="c" data-n="3" data-g="Питер · отбор"><img loading="lazy" src="img/003.jpg" alt=""><span class="n">3</span></div>
+<div class="c" data-n="4" data-g="Питер · отбор"><img loading="lazy" src="img/004.jpg" alt=""><span class="n">4</span></div>
+<div class="c" data-n="5" data-g="Питер · отбор"><img loading="lazy" src="img/005.jpg" alt=""><span class="n">5</span></div>
+<div class="c" data-n="6" data-g="Питер · отбор"><img loading="lazy" src="img/006.jpg" alt=""><span class="n">6</span></div>
+<div class="c" data-n="7" data-g="Питер · отбор"><img loading="lazy" src="img/007.jpg" alt=""><span class="n">7</span></div>
+<div class="c" data-n="8" data-g="Питер · отбор"><img loading="lazy" src="img/008.jpg" alt=""><span class="n">8</span></div>
+<div class="c" data-n="9" data-g="Питер · отбор"><img loading="lazy" src="img/009.jpg" alt=""><span class="n">9</span></div>
+<div class="c" data-n="10" data-g="Питер · отбор"><img loading="lazy" src="img/010.jpg" alt=""><span class="n">10</span></div>
+<div class="c" data-n="11" data-g="Питер · отбор"><img loading="lazy" src="img/011.jpg" alt=""><span class="n">11</span></div>
+<div class="c" data-n="12" data-g="Питер · отбор"><img loading="lazy" src="img/012.jpg" alt=""><span class="n">12</span></div>
+<div class="c" data-n="13" data-g="Питер · отбор"><img loading="lazy" src="img/013.jpg" alt=""><span class="n">13</span></div>
+<div class="c" data-n="14" data-g="Питер · отбор"><img loading="lazy" src="img/014.jpg" alt=""><span class="n">14</span></div>
+<div class="c" data-n="15" data-g="Питер · отбор"><img loading="lazy" src="img/015.jpg" alt=""><span class="n">15</span></div>
+<div class="c" data-n="16" data-g="Питер · отбор"><img loading="lazy" src="img/016.jpg" alt=""><span class="n">16</span></div>
+<div class="c" data-n="17" data-g="Питер · отбор"><img loading="lazy" src="img/017.jpg" alt=""><span class="n">17</span></div>
+<div class="c" data-n="18" data-g="Питер · отбор"><img loading="lazy" src="img/018.jpg" alt=""><span class="n">18</span></div>
+<div class="c" data-n="19" data-g="Питер · отбор"><img loading="lazy" src="img/019.jpg" alt=""><span class="n">19</span></div>
+<div class="c" data-n="20" data-g="Питер · отбор"><img loading="lazy" src="img/020.jpg" alt=""><span class="n">20</span></div>
+<div class="c" data-n="21" data-g="Питер · отбор"><img loading="lazy" src="img/021.jpg" alt=""><span class="n">21</span></div>
+<div class="c" data-n="22" data-g="Питер · отбор"><img loading="lazy" src="img/022.jpg" alt=""><span class="n">22</span></div>
+<div class="c" data-n="23" data-g="Питер · отбор"><img loading="lazy" src="img/023.jpg" alt=""><span class="n">23</span></div>
+<div class="c" data-n="24" data-g="Питер · отбор"><img loading="lazy" src="img/024.jpg" alt=""><span class="n">24</span></div>
+<div class="c" data-n="25" data-g="Питер · отбор"><img loading="lazy" src="img/025.jpg" alt=""><span class="n">25</span></div>
+<div class="c" data-n="26" data-g="Питер · отбор"><img loading="lazy" src="img/026.jpg" alt=""><span class="n">26</span></div>
+<div class="c" data-n="27" data-g="Питер · отбор"><img loading="lazy" src="img/027.jpg" alt=""><span class="n">27</span></div>
+<div class="c" data-n="28" data-g="Питер · отбор"><img loading="lazy" src="img/028.jpg" alt=""><span class="n">28</span></div>
+<div class="c" data-n="29" data-g="Питер · отбор"><img loading="lazy" src="img/029.jpg" alt=""><span class="n">29</span></div>
+<div class="c" data-n="30" data-g="Питер · отбор"><img loading="lazy" src="img/030.jpg" alt=""><span class="n">30</span></div>
+<div class="c" data-n="31" data-g="Питер · ретушь"><img loading="lazy" src="img/031.jpg" alt=""><span class="n">31</span></div>
+<div class="c" data-n="32" data-g="Питер · ретушь"><img loading="lazy" src="img/032.jpg" alt=""><span class="n">32</span></div>
+<div class="c" data-n="33" data-g="Питер · ретушь"><img loading="lazy" src="img/033.jpg" alt=""><span class="n">33</span></div>
+<div class="c" data-n="34" data-g="Питер · ретушь"><img loading="lazy" src="img/034.jpg" alt=""><span class="n">34</span></div>
+<div class="c" data-n="35" data-g="Питер · ретушь"><img loading="lazy" src="img/035.jpg" alt=""><span class="n">35</span></div>
+<div class="c" data-n="36" data-g="Питер · ретушь"><img loading="lazy" src="img/036.jpg" alt=""><span class="n">36</span></div>
+<div class="c" data-n="37" data-g="Питер · ретушь"><img loading="lazy" src="img/037.jpg" alt=""><span class="n">37</span></div>
+<div class="c" data-n="38" data-g="Питер · ретушь"><img loading="lazy" src="img/038.jpg" alt=""><span class="n">38</span></div>
+<div class="c" data-n="39" data-g="Питер · ретушь"><img loading="lazy" src="img/039.jpg" alt=""><span class="n">39</span></div>
+<div class="c" data-n="40" data-g="Питер · ретушь"><img loading="lazy" src="img/040.jpg" alt=""><span class="n">40</span></div>
+<div class="c" data-n="41" data-g="Питер · ретушь"><img loading="lazy" src="img/041.jpg" alt=""><span class="n">41</span></div>
+<div class="c" data-n="42" data-g="Питер · ретушь"><img loading="lazy" src="img/042.jpg" alt=""><span class="n">42</span></div>
+<div class="c" data-n="43" data-g="Питер · ретушь"><img loading="lazy" src="img/043.jpg" alt=""><span class="n">43</span></div>
+<div class="c" data-n="44" data-g="Питер · ретушь"><img loading="lazy" src="img/044.jpg" alt=""><span class="n">44</span></div>
+<div class="c" data-n="45" data-g="Питер · ретушь"><img loading="lazy" src="img/045.jpg" alt=""><span class="n">45</span></div>
+<div class="c" data-n="46" data-g="Питер · ретушь"><img loading="lazy" src="img/046.jpg" alt=""><span class="n">46</span></div>
+<div class="c" data-n="47" data-g="Отбор для поста"><img loading="lazy" src="img/047.jpg" alt=""><span class="n">47</span></div>
+<div class="c" data-n="48" data-g="Отбор для поста"><img loading="lazy" src="img/048.jpg" alt=""><span class="n">48</span></div>
+<div class="c" data-n="49" data-g="Отбор для поста"><img loading="lazy" src="img/049.jpg" alt=""><span class="n">49</span></div>
+<div class="c" data-n="50" data-g="Отбор для поста"><img loading="lazy" src="img/050.jpg" alt=""><span class="n">50</span></div>
+<div class="c" data-n="51" data-g="Отбор для поста"><img loading="lazy" src="img/051.jpg" alt=""><span class="n">51</span></div>
+<div class="c" data-n="52" data-g="Отбор для поста"><img loading="lazy" src="img/052.jpg" alt=""><span class="n">52</span></div>
+<div class="c" data-n="53" data-g="Отбор для поста"><img loading="lazy" src="img/053.jpg" alt=""><span class="n">53</span></div>
+<div class="c" data-n="54" data-g="Отбор для поста"><img loading="lazy" src="img/054.jpg" alt=""><span class="n">54</span></div>
+<div class="c" data-n="55" data-g="Отбор для поста"><img loading="lazy" src="img/055.jpg" alt=""><span class="n">55</span></div>
+<div class="c" data-n="56" data-g="Отбор для поста"><img loading="lazy" src="img/056.jpg" alt=""><span class="n">56</span></div>
+<div class="c" data-n="57" data-g="Отбор для поста"><img loading="lazy" src="img/057.jpg" alt=""><span class="n">57</span></div>
+<div class="c" data-n="58" data-g="Отбор для поста"><img loading="lazy" src="img/058.jpg" alt=""><span class="n">58</span></div>
+<div class="c" data-n="59" data-g="Отбор для поста"><img loading="lazy" src="img/059.jpg" alt=""><span class="n">59</span></div>
+<div class="c" data-n="60" data-g="Отбор для поста"><img loading="lazy" src="img/060.jpg" alt=""><span class="n">60</span></div>
+<div class="c" data-n="61" data-g="Отбор для поста"><img loading="lazy" src="img/061.jpg" alt=""><span class="n">61</span></div>
+<div class="c" data-n="62" data-g="Отбор для поста"><img loading="lazy" src="img/062.jpg" alt=""><span class="n">62</span></div>
+<div class="c" data-n="63" data-g="Отбор для поста"><img loading="lazy" src="img/063.jpg" alt=""><span class="n">63</span></div>
+<div class="c" data-n="64" data-g="Отбор для поста"><img loading="lazy" src="img/064.jpg" alt=""><span class="n">64</span></div>
+<div class="c" data-n="65" data-g="Отбор для поста"><img loading="lazy" src="img/065.jpg" alt=""><span class="n">65</span></div>
+<div class="c" data-n="66" data-g="Отбор для поста"><img loading="lazy" src="img/066.jpg" alt=""><span class="n">66</span></div>
+<div class="c" data-n="67" data-g="Отбор для поста"><img loading="lazy" src="img/067.jpg" alt=""><span class="n">67</span></div>
+<div class="c" data-n="68" data-g="Отбор для поста"><img loading="lazy" src="img/068.jpg" alt=""><span class="n">68</span></div>
+<div class="c" data-n="69" data-g="Отбор для поста"><img loading="lazy" src="img/069.jpg" alt=""><span class="n">69</span></div>
+<div class="c" data-n="70" data-g="Имидж 05.06"><img loading="lazy" src="img/070.jpg" alt=""><span class="n">70</span></div>
+<div class="c" data-n="71" data-g="Имидж 05.06"><img loading="lazy" src="img/071.jpg" alt=""><span class="n">71</span></div>
+<div class="c" data-n="72" data-g="Имидж 05.06"><img loading="lazy" src="img/072.jpg" alt=""><span class="n">72</span></div>
+<div class="c" data-n="73" data-g="Имидж 05.06"><img loading="lazy" src="img/073.jpg" alt=""><span class="n">73</span></div>
+<div class="c" data-n="74" data-g="Имидж 05.06"><img loading="lazy" src="img/074.jpg" alt=""><span class="n">74</span></div>
+<div class="c" data-n="75" data-g="Имидж 05.06"><img loading="lazy" src="img/075.jpg" alt=""><span class="n">75</span></div>
+<div class="c" data-n="76" data-g="Имидж 05.06"><img loading="lazy" src="img/076.jpg" alt=""><span class="n">76</span></div>
+<div class="c" data-n="77" data-g="Имидж 05.06"><img loading="lazy" src="img/077.jpg" alt=""><span class="n">77</span></div>
+<div class="c" data-n="78" data-g="Имидж 05.06"><img loading="lazy" src="img/078.jpg" alt=""><span class="n">78</span></div>
+<div class="c" data-n="79" data-g="Имидж 05.06"><img loading="lazy" src="img/079.jpg" alt=""><span class="n">79</span></div>
+<div class="c" data-n="80" data-g="Имидж 05.06"><img loading="lazy" src="img/080.jpg" alt=""><span class="n">80</span></div>
+<div class="c" data-n="81" data-g="Имидж 05.06"><img loading="lazy" src="img/081.jpg" alt=""><span class="n">81</span></div>
+<div class="c" data-n="82" data-g="Имидж 05.06"><img loading="lazy" src="img/082.jpg" alt=""><span class="n">82</span></div>
+<div class="c" data-n="83" data-g="Имидж 05.06"><img loading="lazy" src="img/083.jpg" alt=""><span class="n">83</span></div>
+<div class="c" data-n="84" data-g="Имидж 05.06"><img loading="lazy" src="img/084.jpg" alt=""><span class="n">84</span></div>
+<div class="c" data-n="85" data-g="Имидж 05.06"><img loading="lazy" src="img/085.jpg" alt=""><span class="n">85</span></div>
+<div class="c" data-n="86" data-g="Имидж 05.06"><img loading="lazy" src="img/086.jpg" alt=""><span class="n">86</span></div>
+<div class="c" data-n="87" data-g="Имидж 05.06"><img loading="lazy" src="img/087.jpg" alt=""><span class="n">87</span></div>
+<div class="c" data-n="88" data-g="Имидж 05.06"><img loading="lazy" src="img/088.jpg" alt=""><span class="n">88</span></div>
+<div class="c" data-n="89" data-g="Имидж 05.06"><img loading="lazy" src="img/089.jpg" alt=""><span class="n">89</span></div>
+<div class="c" data-n="90" data-g="Имидж 05.06"><img loading="lazy" src="img/090.jpg" alt=""><span class="n">90</span></div>
+<div class="c" data-n="91" data-g="Имидж 05.06"><img loading="lazy" src="img/091.jpg" alt=""><span class="n">91</span></div>
+<div class="c" data-n="92" data-g="Имидж 05.06"><img loading="lazy" src="img/092.jpg" alt=""><span class="n">92</span></div>
+<div class="c" data-n="93" data-g="Имидж 05.06"><img loading="lazy" src="img/093.jpg" alt=""><span class="n">93</span></div>
+<div class="c" data-n="94" data-g="Имидж 05.06"><img loading="lazy" src="img/094.jpg" alt=""><span class="n">94</span></div>
+<div class="c" data-n="95" data-g="Имидж 05.06"><img loading="lazy" src="img/095.jpg" alt=""><span class="n">95</span></div>
+<div class="c" data-n="96" data-g="Имидж 05.06"><img loading="lazy" src="img/096.jpg" alt=""><span class="n">96</span></div>
+<div class="c" data-n="97" data-g="Имидж 05.06"><img loading="lazy" src="img/097.jpg" alt=""><span class="n">97</span></div>
+<div class="c" data-n="98" data-g="Имидж 05.06"><img loading="lazy" src="img/098.jpg" alt=""><span class="n">98</span></div>
+<div class="c" data-n="99" data-g="Имидж 05.06"><img loading="lazy" src="img/099.jpg" alt=""><span class="n">99</span></div>
+<div class="c" data-n="100" data-g="Имидж 05.06"><img loading="lazy" src="img/100.jpg" alt=""><span class="n">100</span></div>
+<div class="c" data-n="101" data-g="Имидж 05.06"><img loading="lazy" src="img/101.jpg" alt=""><span class="n">101</span></div>
+<div class="c" data-n="102" data-g="Имидж 05.06"><img loading="lazy" src="img/102.jpg" alt=""><span class="n">102</span></div>
+<div class="c" data-n="103" data-g="Имидж 05.06"><img loading="lazy" src="img/103.jpg" alt=""><span class="n">103</span></div>
+<div class="c" data-n="104" data-g="Имидж 05.06"><img loading="lazy" src="img/104.jpg" alt=""><span class="n">104</span></div>
+<div class="c" data-n="105" data-g="Имидж 05.06"><img loading="lazy" src="img/105.jpg" alt=""><span class="n">105</span></div>
+<div class="c" data-n="106" data-g="Имидж 05.06"><img loading="lazy" src="img/106.jpg" alt=""><span class="n">106</span></div>
+<div class="c" data-n="107" data-g="Имидж 05.06"><img loading="lazy" src="img/107.jpg" alt=""><span class="n">107</span></div>
+<div class="c" data-n="108" data-g="Имидж 05.06"><img loading="lazy" src="img/108.jpg" alt=""><span class="n">108</span></div>
+<div class="c" data-n="109" data-g="Имидж 05.06"><img loading="lazy" src="img/109.jpg" alt=""><span class="n">109</span></div>
+<div class="c" data-n="110" data-g="Имидж 05.06"><img loading="lazy" src="img/110.jpg" alt=""><span class="n">110</span></div>
+<div class="c" data-n="111" data-g="Имидж 05.06"><img loading="lazy" src="img/111.jpg" alt=""><span class="n">111</span></div>
+<div class="c" data-n="112" data-g="Имидж 05.06"><img loading="lazy" src="img/112.jpg" alt=""><span class="n">112</span></div>
+<div class="c" data-n="113" data-g="Имидж 05.06"><img loading="lazy" src="img/113.jpg" alt=""><span class="n">113</span></div>
+<div class="c" data-n="114" data-g="Имидж 05.06"><img loading="lazy" src="img/114.jpg" alt=""><span class="n">114</span></div>
+<div class="c" data-n="115" data-g="Имидж 05.06"><img loading="lazy" src="img/115.jpg" alt=""><span class="n">115</span></div>
+<div class="c" data-n="116" data-g="Имидж 05.06"><img loading="lazy" src="img/116.jpg" alt=""><span class="n">116</span></div>
+<div class="c" data-n="117" data-g="Имидж 05.06"><img loading="lazy" src="img/117.jpg" alt=""><span class="n">117</span></div>
+<div class="c" data-n="118" data-g="Имидж 05.06"><img loading="lazy" src="img/118.jpg" alt=""><span class="n">118</span></div>
+<div class="c" data-n="119" data-g="Имидж 05.06"><img loading="lazy" src="img/119.jpg" alt=""><span class="n">119</span></div>
+<div class="c" data-n="120" data-g="Имидж 05.06"><img loading="lazy" src="img/120.jpg" alt=""><span class="n">120</span></div>
+<div class="c" data-n="121" data-g="Имидж 05.06"><img loading="lazy" src="img/121.jpg" alt=""><span class="n">121</span></div>
+<div class="c" data-n="122" data-g="Имидж 05.06"><img loading="lazy" src="img/122.jpg" alt=""><span class="n">122</span></div>
+<div class="c" data-n="123" data-g="Имидж 05.06"><img loading="lazy" src="img/123.jpg" alt=""><span class="n">123</span></div>
+<div class="c" data-n="124" data-g="Имидж 05.06"><img loading="lazy" src="img/124.jpg" alt=""><span class="n">124</span></div>
+<div class="c" data-n="125" data-g="Имидж 05.06"><img loading="lazy" src="img/125.jpg" alt=""><span class="n">125</span></div>
+<div class="c" data-n="126" data-g="Имидж 05.06"><img loading="lazy" src="img/126.jpg" alt=""><span class="n">126</span></div>
+<div class="c" data-n="127" data-g="Имидж 05.06"><img loading="lazy" src="img/127.jpg" alt=""><span class="n">127</span></div>
+<div class="c" data-n="128" data-g="Имидж 05.06"><img loading="lazy" src="img/128.jpg" alt=""><span class="n">128</span></div>
+<div class="c" data-n="129" data-g="Имидж 05.06"><img loading="lazy" src="img/129.jpg" alt=""><span class="n">129</span></div>
+<div class="c" data-n="130" data-g="Мужская ретушь"><img loading="lazy" src="img/130.jpg" alt=""><span class="n">130</span></div>
+<div class="c" data-n="131" data-g="Мужская ретушь"><img loading="lazy" src="img/131.jpg" alt=""><span class="n">131</span></div>
+<div class="c" data-n="132" data-g="Мужская ретушь"><img loading="lazy" src="img/132.jpg" alt=""><span class="n">132</span></div>
+<div class="c" data-n="133" data-g="Мужская ретушь"><img loading="lazy" src="img/133.jpg" alt=""><span class="n">133</span></div>
+<div class="c" data-n="134" data-g="Мужская ретушь"><img loading="lazy" src="img/134.jpg" alt=""><span class="n">134</span></div>
+<div class="c" data-n="135" data-g="Мужская ретушь"><img loading="lazy" src="img/135.jpg" alt=""><span class="n">135</span></div>
+<div class="c" data-n="136" data-g="Мужская ретушь"><img loading="lazy" src="img/136.jpg" alt=""><span class="n">136</span></div>
+<div class="c" data-n="137" data-g="Мужская ретушь"><img loading="lazy" src="img/137.jpg" alt=""><span class="n">137</span></div>
+<div class="c" data-n="138" data-g="Мужская ретушь"><img loading="lazy" src="img/138.jpg" alt=""><span class="n">138</span></div>
+<div class="c" data-n="139" data-g="Мужская ретушь"><img loading="lazy" src="img/139.jpg" alt=""><span class="n">139</span></div>
+<div class="c" data-n="140" data-g="Мужская ретушь"><img loading="lazy" src="img/140.jpg" alt=""><span class="n">140</span></div>
+<div class="c" data-n="141" data-g="Мужская ретушь"><img loading="lazy" src="img/141.jpg" alt=""><span class="n">141</span></div>
+<div class="c" data-n="142" data-g="Мужская ретушь"><img loading="lazy" src="img/142.jpg" alt=""><span class="n">142</span></div>
+<div class="c" data-n="143" data-g="Мужская ретушь"><img loading="lazy" src="img/143.jpg" alt=""><span class="n">143</span></div>
+<div class="c" data-n="144" data-g="Мужская ретушь"><img loading="lazy" src="img/144.jpg" alt=""><span class="n">144</span></div>
+<div class="c" data-n="145" data-g="Мужская ретушь"><img loading="lazy" src="img/145.jpg" alt=""><span class="n">145</span></div>
+<div class="c" data-n="146" data-g="Мужская ретушь"><img loading="lazy" src="img/146.jpg" alt=""><span class="n">146</span></div>
+<div class="c" data-n="147" data-g="Мужская ретушь"><img loading="lazy" src="img/147.jpg" alt=""><span class="n">147</span></div>
+<div class="c" data-n="148" data-g="Мужская ретушь"><img loading="lazy" src="img/148.jpg" alt=""><span class="n">148</span></div>
+<div class="c" data-n="149" data-g="Мужская ретушь"><img loading="lazy" src="img/149.jpg" alt=""><span class="n">149</span></div>
+<div class="c" data-n="150" data-g="Мужская ретушь"><img loading="lazy" src="img/150.jpg" alt=""><span class="n">150</span></div>
+<div class="c" data-n="151" data-g="Мужская ретушь"><img loading="lazy" src="img/151.jpg" alt=""><span class="n">151</span></div>
+<div class="c" data-n="152" data-g="Мужская ретушь"><img loading="lazy" src="img/152.jpg" alt=""><span class="n">152</span></div>
+<div class="c" data-n="153" data-g="Мужская ретушь"><img loading="lazy" src="img/153.jpg" alt=""><span class="n">153</span></div>
+<div class="c" data-n="154" data-g="Мужская ретушь"><img loading="lazy" src="img/154.jpg" alt=""><span class="n">154</span></div>
+<div class="c" data-n="155" data-g="Мужская ретушь"><img loading="lazy" src="img/155.jpg" alt=""><span class="n">155</span></div>
+<div class="c" data-n="156" data-g="Мужская ретушь"><img loading="lazy" src="img/156.jpg" alt=""><span class="n">156</span></div>
+<div class="c" data-n="157" data-g="Мужская ретушь"><img loading="lazy" src="img/157.jpg" alt=""><span class="n">157</span></div>
+<div class="c" data-n="158" data-g="Мужская ретушь"><img loading="lazy" src="img/158.jpg" alt=""><span class="n">158</span></div>
+<div class="c" data-n="159" data-g="Мужская ретушь"><img loading="lazy" src="img/159.jpg" alt=""><span class="n">159</span></div>
+<div class="c" data-n="160" data-g="Мужская ретушь"><img loading="lazy" src="img/160.jpg" alt=""><span class="n">160</span></div>
+<div class="c" data-n="161" data-g="Мужская ретушь"><img loading="lazy" src="img/161.jpg" alt=""><span class="n">161</span></div>
+<div class="c" data-n="162" data-g="Мужская ретушь"><img loading="lazy" src="img/162.jpg" alt=""><span class="n">162</span></div>
+<div class="c" data-n="163" data-g="Мужская ретушь"><img loading="lazy" src="img/163.jpg" alt=""><span class="n">163</span></div>
+<div class="c" data-n="164" data-g="Мужская ретушь"><img loading="lazy" src="img/164.jpg" alt=""><span class="n">164</span></div>
+<div class="c" data-n="165" data-g="Мужская ретушь"><img loading="lazy" src="img/165.jpg" alt=""><span class="n">165</span></div>
+<div class="c" data-n="166" data-g="Мужская ретушь"><img loading="lazy" src="img/166.jpg" alt=""><span class="n">166</span></div>
+<div class="c" data-n="167" data-g="Мужская ретушь"><img loading="lazy" src="img/167.jpg" alt=""><span class="n">167</span></div>
+<div class="c" data-n="168" data-g="Мужская ретушь"><img loading="lazy" src="img/168.jpg" alt=""><span class="n">168</span></div>
+<div class="c" data-n="169" data-g="Мужская ретушь"><img loading="lazy" src="img/169.jpg" alt=""><span class="n">169</span></div>
+<div class="c" data-n="170" data-g="Мужская ретушь"><img loading="lazy" src="img/170.jpg" alt=""><span class="n">170</span></div>
+<div class="c" data-n="171" data-g="Мужская ретушь"><img loading="lazy" src="img/171.jpg" alt=""><span class="n">171</span></div>
+<div class="c" data-n="172" data-g="Мужская ретушь"><img loading="lazy" src="img/172.jpg" alt=""><span class="n">172</span></div>
+<div class="c" data-n="173" data-g="Мужская ретушь"><img loading="lazy" src="img/173.jpg" alt=""><span class="n">173</span></div>
+<div class="c" data-n="174" data-g="Мужская ретушь"><img loading="lazy" src="img/174.jpg" alt=""><span class="n">174</span></div>
+<div class="c" data-n="175" data-g="Мужская ретушь"><img loading="lazy" src="img/175.jpg" alt=""><span class="n">175</span></div>
+<div class="c" data-n="176" data-g="Мужская ретушь"><img loading="lazy" src="img/176.jpg" alt=""><span class="n">176</span></div>
+<div class="c" data-n="177" data-g="Мужская ретушь"><img loading="lazy" src="img/177.jpg" alt=""><span class="n">177</span></div>
+<div class="c" data-n="178" data-g="Мужская ретушь"><img loading="lazy" src="img/178.jpg" alt=""><span class="n">178</span></div>
+<div class="c" data-n="179" data-g="Мужская ретушь"><img loading="lazy" src="img/179.jpg" alt=""><span class="n">179</span></div>
+<div class="c" data-n="180" data-g="Мужская ретушь"><img loading="lazy" src="img/180.jpg" alt=""><span class="n">180</span></div>
+<div class="c" data-n="181" data-g="Мужская ретушь"><img loading="lazy" src="img/181.jpg" alt=""><span class="n">181</span></div>
+<div class="c" data-n="182" data-g="Мужская ретушь"><img loading="lazy" src="img/182.jpg" alt=""><span class="n">182</span></div>
+<div class="c" data-n="183" data-g="Мужская ретушь"><img loading="lazy" src="img/183.jpg" alt=""><span class="n">183</span></div>
+<div class="c" data-n="184" data-g="Мужская ретушь"><img loading="lazy" src="img/184.jpg" alt=""><span class="n">184</span></div>
+<div class="c" data-n="185" data-g="Мужская ретушь"><img loading="lazy" src="img/185.jpg" alt=""><span class="n">185</span></div>
+<div class="c" data-n="186" data-g="Мужская ретушь"><img loading="lazy" src="img/186.jpg" alt=""><span class="n">186</span></div>
+<div class="c" data-n="187" data-g="Мужская ретушь"><img loading="lazy" src="img/187.jpg" alt=""><span class="n">187</span></div>
+<div class="c" data-n="188" data-g="Мужская ретушь"><img loading="lazy" src="img/188.jpg" alt=""><span class="n">188</span></div>
+<div class="c" data-n="189" data-g="Мужская ретушь"><img loading="lazy" src="img/189.jpg" alt=""><span class="n">189</span></div>
+<div class="c" data-n="190" data-g="Мужская ретушь"><img loading="lazy" src="img/190.jpg" alt=""><span class="n">190</span></div>
+<div class="c" data-n="191" data-g="Мужская ретушь"><img loading="lazy" src="img/191.jpg" alt=""><span class="n">191</span></div>
+<div class="c" data-n="192" data-g="Мужская ретушь"><img loading="lazy" src="img/192.jpg" alt=""><span class="n">192</span></div>
+<div class="c" data-n="193" data-g="Мужская ретушь"><img loading="lazy" src="img/193.jpg" alt=""><span class="n">193</span></div>
+<div class="c" data-n="194" data-g="Мужская ретушь"><img loading="lazy" src="img/194.jpg" alt=""><span class="n">194</span></div>
+<div class="c" data-n="195" data-g="Мужская ретушь"><img loading="lazy" src="img/195.jpg" alt=""><span class="n">195</span></div>
+<div class="c" data-n="196" data-g="Мужская ретушь"><img loading="lazy" src="img/196.jpg" alt=""><span class="n">196</span></div>
+<div class="c" data-n="197" data-g="Мужская ретушь"><img loading="lazy" src="img/197.jpg" alt=""><span class="n">197</span></div>
+<div class="c" data-n="198" data-g="Мужская ретушь"><img loading="lazy" src="img/198.jpg" alt=""><span class="n">198</span></div>
+<div class="c" data-n="199" data-g="Мужская ретушь"><img loading="lazy" src="img/199.jpg" alt=""><span class="n">199</span></div>
+<div class="c" data-n="200" data-g="Мужская ретушь"><img loading="lazy" src="img/200.jpg" alt=""><span class="n">200</span></div>
+<div class="c" data-n="201" data-g="Мужская ретушь"><img loading="lazy" src="img/201.jpg" alt=""><span class="n">201</span></div>
+<div class="c" data-n="202" data-g="Мужская ретушь"><img loading="lazy" src="img/202.jpg" alt=""><span class="n">202</span></div>
+<div class="c" data-n="203" data-g="Мужская ретушь"><img loading="lazy" src="img/203.jpg" alt=""><span class="n">203</span></div>
+<div class="c" data-n="204" data-g="Мужская ретушь"><img loading="lazy" src="img/204.jpg" alt=""><span class="n">204</span></div>
+<div class="c" data-n="205" data-g="Мужская ретушь"><img loading="lazy" src="img/205.jpg" alt=""><span class="n">205</span></div>
+<div class="c" data-n="206" data-g="Мужская ретушь"><img loading="lazy" src="img/206.jpg" alt=""><span class="n">206</span></div>
+<div class="c" data-n="207" data-g="Мужская ретушь"><img loading="lazy" src="img/207.jpg" alt=""><span class="n">207</span></div>
+<div class="c" data-n="208" data-g="Мужская ретушь"><img loading="lazy" src="img/208.jpg" alt=""><span class="n">208</span></div>
+<div class="c" data-n="209" data-g="Мужская ретушь"><img loading="lazy" src="img/209.jpg" alt=""><span class="n">209</span></div>
+<div class="c" data-n="210" data-g="Мужская ретушь"><img loading="lazy" src="img/210.jpg" alt=""><span class="n">210</span></div>
+<div class="c" data-n="211" data-g="Мужская ретушь"><img loading="lazy" src="img/211.jpg" alt=""><span class="n">211</span></div>
+<div class="c" data-n="212" data-g="Мужская ретушь"><img loading="lazy" src="img/212.jpg" alt=""><span class="n">212</span></div>
+<div class="c" data-n="213" data-g="Мужская ретушь"><img loading="lazy" src="img/213.jpg" alt=""><span class="n">213</span></div>
+<div class="c" data-n="214" data-g="Мужская ретушь"><img loading="lazy" src="img/214.jpg" alt=""><span class="n">214</span></div>
+<div class="c" data-n="215" data-g="Мужская ретушь"><img loading="lazy" src="img/215.jpg" alt=""><span class="n">215</span></div>
+<div class="c" data-n="216" data-g="Мужская ретушь"><img loading="lazy" src="img/216.jpg" alt=""><span class="n">216</span></div>
+<div class="c" data-n="217" data-g="Мужская ретушь"><img loading="lazy" src="img/217.jpg" alt=""><span class="n">217</span></div>
+<div class="c" data-n="218" data-g="Мужская ретушь"><img loading="lazy" src="img/218.jpg" alt=""><span class="n">218</span></div>
+<div class="c" data-n="219" data-g="Мужская ретушь"><img loading="lazy" src="img/219.jpg" alt=""><span class="n">219</span></div>
+<div class="c" data-n="220" data-g="Мужская ретушь"><img loading="lazy" src="img/220.jpg" alt=""><span class="n">220</span></div>
+<div class="c" data-n="221" data-g="Мужская ретушь"><img loading="lazy" src="img/221.jpg" alt=""><span class="n">221</span></div>
+<div class="c" data-n="222" data-g="Мужская ретушь"><img loading="lazy" src="img/222.jpg" alt=""><span class="n">222</span></div>
+<div class="c" data-n="223" data-g="Мужская ретушь"><img loading="lazy" src="img/223.jpg" alt=""><span class="n">223</span></div>
+<div class="c" data-n="224" data-g="Мужская ретушь"><img loading="lazy" src="img/224.jpg" alt=""><span class="n">224</span></div>
+<div class="c" data-n="225" data-g="Мужская ретушь"><img loading="lazy" src="img/225.jpg" alt=""><span class="n">225</span></div>
+<div class="c" data-n="226" data-g="Мужская ретушь"><img loading="lazy" src="img/226.jpg" alt=""><span class="n">226</span></div>
+<div class="c" data-n="227" data-g="Мужская ретушь"><img loading="lazy" src="img/227.jpg" alt=""><span class="n">227</span></div>
+<div class="c" data-n="228" data-g="Мужская ретушь"><img loading="lazy" src="img/228.jpg" alt=""><span class="n">228</span></div>
+<div class="c" data-n="229" data-g="Мужская ретушь"><img loading="lazy" src="img/229.jpg" alt=""><span class="n">229</span></div>
+<div class="c" data-n="230" data-g="Мужская ретушь"><img loading="lazy" src="img/230.jpg" alt=""><span class="n">230</span></div>
+<div class="c" data-n="231" data-g="Мужская ретушь"><img loading="lazy" src="img/231.jpg" alt=""><span class="n">231</span></div></div>
+</div>
+<div id="out"></div>
+<div class="bar">
+  <span class="cnt">выбрано: <b id="k">0</b></span>
+  <button id="copy">Скопировать выбранное</button>
+  <button id="show" style="background:#333;color:var(--fg)">Список</button>
+</div>
+<script>
+const KEY="enevoo-sheet-aug26";
+let sel=new Set(JSON.parse(localStorage.getItem(KEY)||"[]"));
+const k=document.getElementById("k");
+function paint(){document.querySelectorAll(".c").forEach(c=>{c.classList.toggle("sel",sel.has(c.dataset.n))});k.textContent=sel.size}
+document.querySelectorAll(".c").forEach(c=>c.onclick=()=>{const n=c.dataset.n;sel.has(n)?sel.delete(n):sel.add(n);localStorage.setItem(KEY,JSON.stringify([...sel]));paint()});
+document.querySelectorAll(".chip").forEach(ch=>ch.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));ch.classList.add("on");const f=ch.dataset.f;document.querySelectorAll(".c").forEach(c=>{c.style.display=(f==="все"||c.dataset.g===f)?"":"none"})});
+function listText(){return "Отобрано в ленту ("+sel.size+"): "+[...sel].map(Number).sort((a,b)=>a-b).join(", ")}
+document.getElementById("copy").onclick=async e=>{try{await navigator.clipboard.writeText(listText());e.target.textContent="Скопировано ✓";setTimeout(()=>e.target.textContent="Скопировать выбранное",2000)}catch(_){const o=document.getElementById("out");o.style.display="block";o.textContent=listText()}};
+document.getElementById("show").onclick=()=>{const o=document.getElementById("out");o.style.display=o.style.display==="block"?"none":"block";o.textContent=listText()};
+paint();
+</script></body></html>
