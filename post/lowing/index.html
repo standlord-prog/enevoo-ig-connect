@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>enevoó · пробный пост · джинсы LOWING</title>
+<style>
+  :root{--bg:#0e0d0c;--card:#171514;--fg:#ece8e2;--mut:#948f89;--line:#2a2724;--acc:#c9b99a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:520px;margin:0 auto;padding:24px 14px 70px}
+  .brand{letter-spacing:.4em;text-transform:uppercase;text-align:center;color:var(--acc);font-size:12px}
+  h1{text-align:center;font-weight:300;font-size:22px;margin:8px 0 4px;letter-spacing:.04em}
+  .sub{text-align:center;color:var(--mut);font-size:12.5px;margin-bottom:24px}
+  h2{font-weight:400;font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+     color:var(--acc);margin:38px 0 12px;text-align:center}
+
+  /* макет поста Instagram */
+  .post{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .top{display:flex;align-items:center;gap:10px;padding:11px 13px}
+  .ava{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#c9b99a,#6b6560);flex:0 0 auto}
+  .nick{font-size:13.5px;font-weight:600}
+  .nick span{display:block;font-weight:400;font-size:11px;color:var(--mut)}
+  .slider{position:relative;background:#000;aspect-ratio:3/4;overflow:hidden}
+  .track{display:flex;height:100%;transition:transform .32s cubic-bezier(.4,0,.2,1)}
+  .track img{width:100%;height:100%;object-fit:cover;flex:0 0 100%}
+  .nav{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border:0;
+       border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:17px;cursor:pointer;
+       display:flex;align-items:center;justify-content:center;line-height:1}
+  .nav:disabled{opacity:.25;cursor:default}
+  .prev{left:9px} .next{right:9px}
+  .count{position:absolute;top:11px;right:11px;background:rgba(0,0,0,.62);border-radius:999px;
+         padding:3px 10px;font-size:11.5px}
+  .dots{display:flex;gap:5px;justify-content:center;padding:11px 0 4px}
+  .dot{width:6px;height:6px;border-radius:50%;background:#4a4642;transition:background .2s}
+  .dot.on{background:var(--acc)}
+  .acts{display:flex;gap:15px;padding:4px 13px 0;font-size:19px;color:var(--mut)}
+  .cap{padding:9px 13px 15px;font-size:14px;white-space:pre-line}
+  .cap b{font-weight:600}
+  .thumbs{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:10px}
+  .thumbs img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:5px;cursor:pointer;
+              opacity:.45;transition:opacity .2s;border:1px solid transparent}
+  .thumbs img.on{opacity:1;border-color:var(--acc)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:14px}
+  .card h3{margin:0 0 9px;font-size:14px;font-weight:600;letter-spacing:.02em}
+  .alt{white-space:pre-line;color:#d8d3cc;border-left:2px solid var(--line);padding-left:13px;margin:0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{color:var(--mut);width:47%}
+  .note{color:var(--mut);font-size:12.5px;margin-top:9px;line-height:1.55}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="brand">enevoó</div>
+<h1>Пробный пост · джинсы LOWING</h1>
+<div class="sub">карусель из 7 фото Ozon в исходном порядке · проект, не опубликовано</div>
+
+<div class="post">
+  <div class="top">
+    <div class="ava"></div>
+    <div class="nick">enevoo.ru<span>Москва</span></div>
+  </div>
+
+  <div class="slider">
+    <div class="track" id="track">
+      <img src="web/01.jpg" alt="1"><img src="web/02.jpg" alt="2"><img src="web/03.jpg" alt="3">
+      <img src="web/04.jpg" alt="4"><img src="web/05.jpg" alt="5"><img src="web/06.jpg" alt="6">
+      <img src="web/07.jpg" alt="7">
+    </div>
+    <div class="count" id="count">1/7</div>
+    <button class="nav prev" id="prev" disabled>‹</button>
+    <button class="nav next" id="next">›</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+  <div class="acts">♡ ○ ▷</div>
+  <div class="cap" id="cap"></div>
+</div>
+
+<div class="thumbs" id="thumbs">
+  <img src="web/01.jpg" class="on"><img src="web/02.jpg"><img src="web/03.jpg"><img src="web/04.jpg">
+  <img src="web/05.jpg"><img src="web/06.jpg"><img src="web/07.jpg">
+</div>
+
+<h2>Другой вариант текста</h2>
+<div class="card">
+  <h3>Вариант Б — короче, без цены</h3>
+  <p class="alt">Хлопок и ничего кроме.
+
+Голубой деним без эластана: высокая посадка, широкая штанина, длина по внутреннему шву 72 см.
+
+LOWING · S и M · Ozon, ссылка в шапке</p>
+</div>
+
+<h2>Факты — все из карточки Ozon</h2>
+<div class="card">
+<table>
+  <tr><td>состав</td><td>100% хлопок</td></tr>
+  <tr><td>посадка</td><td>высокая</td></tr>
+  <tr><td>крой</td><td>свободный, широкие</td></tr>
+  <tr><td>длина по внутр. шву</td><td>72 см</td></tr>
+  <tr><td>длина по бок. шву</td><td>103 см</td></tr>
+  <tr><td>ширина по низу</td><td>30 см</td></tr>
+  <tr><td>цена сейчас</td><td>11 200 ₽ (было 15 389 ₽)</td></tr>
+  <tr><td>в наличии</td><td>M — 7 шт · S — 2 шт (FBO)</td></tr>
+  <tr><td>производство</td><td>Россия</td></tr>
+  <tr><td>ссылка</td><td>ozon.ru/product/4383260191</td></tr>
+</table>
+<div class="note">Ни одного выдуманного факта: всё выше — из карточки кабинета ИП,
+снято 12.08.2026. XS в кабинете нет, поэтому в тексте только S и M.</div>
+</div>
+
+<h2>Что решаешь ты</h2>
+<div class="card">
+<div class="note" style="color:#d8d3cc;font-size:13.5px">
+<b>1. Первый кадр.</b> Сейчас порядок ровно как на Ozon — открывает поясной crop.
+Для ленты сильнее работает кадр в полный рост (сейчас он второй): в сетке профиля
+видно только первый кадр, и фигура целиком читается лучше, чем фрагмент.
+Скажи — поменяю местами 1 и 2, остальное не трону.<br><br>
+<b>2. Цена в тексте.</b> Вариант А — с ценой и старой ценой. Вариант Б — без цифр,
+только «ссылка в шапке». Для премиального тона Б чище, для распродажи А честнее.<br><br>
+<b>3. Все 7 кадров или меньше.</b> 4 и 5 — очень похожие крупные планы пояса.
+Можно оставить один и сделать карусель из 6.
+</div>
+</div>
+
+</div>
+
+<script>
+const CAP = `<b>enevoo.ru</b> Голубой деним. 100% хлопок, без эластана.
+
+Высокая посадка, широкая штанина, длина по внутреннему шву 72 см — под каблук или тяжёлый ботинок.
+
+LOWING · размеры S и M
+11 200 ₽ вместо 15 389 ₽ · Ozon, ссылка в шапке профиля`;
+document.getElementById('cap').innerHTML = CAP;
+
+const track = document.getElementById('track'), N = 7;
+let i = 0;
+const dots = document.getElementById('dots');
+for (let k = 0; k < N; k++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (k === 0 ? ' on' : '');
+  dots.appendChild(d);
+}
+const thumbs = [...document.querySelectorAll('#thumbs img')];
+function go(n) {
+  i = Math.max(0, Math.min(N - 1, n));
+  track.style.transform = `translateX(-${i * 100}%)`;
+  document.getElementById('count').textContent = `${i + 1}/${N}`;
+  document.getElementById('prev').disabled = i === 0;
+  document.getElementById('next').disabled = i === N - 1;
+  [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
+  thumbs.forEach((t, k) => t.classList.toggle('on', k === i));
+}
+document.getElementById('prev').onclick = () => go(i - 1);
+document.getElementById('next').onclick = () => go(i + 1);
+thumbs.forEach((t, k) => t.onclick = () => go(k));
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') go(i - 1);
+  if (e.key === 'ArrowRight') go(i + 1);
+});
+let x0 = null;
+const sl = document.querySelector('.slider');
+sl.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive: true});
+sl.addEventListener('touchend', e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 40) go(dx < 0 ? i + 1 : i - 1);
+  x0 = null;
+}, {passive: true});
+</script>
+</body>
+</html>
